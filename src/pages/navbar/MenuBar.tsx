@@ -7,22 +7,10 @@ import {
   Button,
   NavbarMenuToggle,
   NavbarMenu,
-  NavbarMenuItem,
 } from "@nextui-org/react";
 import { useState } from "react";
 import { NavLink } from "react-router-dom";
-const menuItems = [
-  "Profile",
-  "Dashboard",
-  "Activity",
-  "Analytics",
-  "System",
-  "Deployments",
-  "My Settings",
-  "Team Settings",
-  "Help & Feedback",
-  "Log Out",
-];
+
 const MenuBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState();
   return (
@@ -38,14 +26,18 @@ const MenuBar = () => {
         <NavbarItem>
           <NavLink
             to="/"
-            className={({ isActive }) => (isActive ? "text-[#4696F3]" : "")}
+            className={({ isActive }) => (isActive ? "text-[#DF453E]" : "")}
           >
             Home
           </NavLink>
-          {/* <Link href="/">Home</Link> */}
         </NavbarItem>
         <NavbarItem>
-          <NavLink to={"/"}>About Us</NavLink>
+          <NavLink
+            to="/about-us"
+            className={({ isActive }) => (isActive ? "text-[#DF453E]" : "")}
+          >
+            About Us
+          </NavLink>
         </NavbarItem>
       </NavbarContent>
       <NavbarContent justify="end">
@@ -53,30 +45,32 @@ const MenuBar = () => {
           <Link href="/login">Login</Link>
         </NavbarItem>
         <NavbarItem>
-          <Button color="primary" variant="flat">
-            <Link href="/register">Sign Up</Link>
+          <Button color="danger">
+            <Link className="text-white" href="/register">
+              Sign Up
+            </Link>
           </Button>
         </NavbarItem>
       </NavbarContent>
       <NavbarMenu>
-        {menuItems.map((item, index) => (
-          <NavbarMenuItem key={`${item}-${index}`}>
-            <Link
-              color={
-                index === 2
-                  ? "primary"
-                  : index === menuItems.length - 1
-                  ? "danger"
-                  : "foreground"
-              }
-              className="w-full"
-              href="#"
-              size="lg"
-            >
-              {item}
-            </Link>
-          </NavbarMenuItem>
-        ))}
+        <NavLink
+          to="/"
+          className={({ isActive }) => (isActive ? "text-[#DF453E]" : "")}
+        >
+          Home
+        </NavLink>
+        <NavLink
+          to="/about-us"
+          className={({ isActive }) => (isActive ? "text-[#DF453E]" : "")}
+        >
+          About Us
+        </NavLink>
+        <NavLink
+          to="/login"
+          className={({ isActive }) => (isActive ? "text-[#DF453E]" : "")}
+        >
+          Login
+        </NavLink>
       </NavbarMenu>
     </Navbar>
   );
