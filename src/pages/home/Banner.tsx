@@ -42,7 +42,7 @@ const Banner = () => {
             <DatePicker size="lg" label="Drop-Off Date" />
             <Button
               size="lg"
-              className="btn bg-[#DF453E] text-white font-semibold text-center mt-3 md:mt-0"
+              className="btn bg-[#DF453E] text-white font-semibold text-center mt-3 md:mt-0 border-none"
             >
               Book Bike
             </Button>

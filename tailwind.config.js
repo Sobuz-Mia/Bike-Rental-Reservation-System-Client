@@ -9,6 +9,6 @@ export default {
   theme: {
     extend: {},
   },
-  plugins: [nextui()],
+  plugins: [require('daisyui'),nextui()],
 }
 
