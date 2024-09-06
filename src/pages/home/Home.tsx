@@ -1,5 +1,6 @@
 import AvailableBikes from "./AvailableBikes";
 import Banner from "./Banner";
+import WhyChooseUs from "./WhyChooseUs";
 
 const Home = () => {
   return (
@@ -8,6 +9,7 @@ const Home = () => {
       <div className="max-w-7xl mx-auto">
         <AvailableBikes />
       </div>
+      <WhyChooseUs />
     </div>
   );
 };

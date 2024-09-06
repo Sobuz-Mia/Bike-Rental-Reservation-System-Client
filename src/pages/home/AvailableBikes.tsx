@@ -3,9 +3,11 @@ import { Divider } from "@nextui-org/react";
 const AvailableBikes = () => {
   return (
     <div className="my-8">
-      <h1 className="text-center text-3xl font-serif">Available Bikes</h1>
+      <h1 className="text-center text-4xl font-bold text-gray-800 mb-2">
+        Available Bikes
+      </h1>
       <Divider
-        className="w-44 mx-auto mb-5"
+        className="w-44 mx-auto mb-8"
         style={{ backgroundColor: "#DF453E", height: "4px" }}
       />
       <div className="grid grid-cols-1 md:grid-cols-3 gap-6 p-4">
