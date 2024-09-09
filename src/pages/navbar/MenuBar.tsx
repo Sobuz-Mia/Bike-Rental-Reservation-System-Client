@@ -41,13 +41,13 @@ const MenuBar = () => {
         </NavbarItem>
       </NavbarContent>
       <NavbarContent justify="end">
-        <NavbarItem>
+        {/* <NavbarItem>
           <Link href="/login">Login</Link>
-        </NavbarItem>
+        </NavbarItem> */}
         <NavbarItem>
-          <Button color="danger">
-            <Link className="text-white" href="/register">
-              Sign Up
+          <Button style={{ backgroundColor: "#DF453E", color: "#fff" }}>
+            <Link className="text-white" href="/login">
+              Sign In
             </Link>
           </Button>
         </NavbarItem>
