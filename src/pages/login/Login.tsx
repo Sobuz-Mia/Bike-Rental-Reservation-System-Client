@@ -2,6 +2,7 @@ import { Button, Input } from "@nextui-org/react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { Link } from "react-router-dom";
 import { useLoginMutation } from "../../redux/features/auth/authApi";
+import { toast } from "sonner";
 
 const Login = () => {
   const [login] = useLoginMutation();
@@ -20,9 +21,11 @@ const Login = () => {
       };
       const res = await login(userInfo).unwrap();
       console.log(res);
-      
+      toast.success(`${res?.message}`);
     } catch (error) {
-      console.log(error);
+      if (error) {
+        toast.error("Something want wrong");
+      }
     }
     // Redirect to dashboard
   };
