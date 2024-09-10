@@ -1,16 +1,23 @@
 import { Button, Input } from "@nextui-org/react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useLoginMutation } from "../../redux/features/auth/authApi";
 import { toast } from "sonner";
+import { verifyAccessToken } from "../../utils/verifyAccessToken";
+import { useAppDispatch } from "../../redux/hooks";
+import { setUser, TUser } from "../../redux/features/auth/authSlice";
 
 const Login = () => {
+  const dispatch = useAppDispatch();
+  const navigate = useNavigate();
   const [login] = useLoginMutation();
   const {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm();
+  } = useForm({
+    defaultValues: { email: "joh@example.com", password: "password123" },
+  });
 
   // On successful form submission, redirect to the dashboard
   const onSubmit: SubmitHandler<FieldValues> = async (data) => {
@@ -20,14 +27,19 @@ const Login = () => {
         password: data?.password,
       };
       const res = await login(userInfo).unwrap();
-      console.log(res);
+      const user = verifyAccessToken(res?.data?.accessToken) as TUser;
+      console.log(user);
+      dispatch(setUser({ user: user, token: res?.data?.accessToken }));
+      // Redirect to dashboard
+      navigate("/");
+
+      // display toast
       toast.success(`${res?.message}`);
     } catch (error) {
       if (error) {
         toast.error("Something want wrong");
       }
     }
-    // Redirect to dashboard
   };
 
   return (

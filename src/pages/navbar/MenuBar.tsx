@@ -9,10 +9,21 @@ import {
   NavbarMenu,
 } from "@nextui-org/react";
 import { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
+import { useAppDispatch, useAppSelector } from "../../redux/hooks";
+import { logOut, selectCurrentUser } from "../../redux/features/auth/authSlice";
+import { toast } from "sonner";
 
 const MenuBar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState();
+  const dispatch = useAppDispatch();
+  const user = useAppSelector(selectCurrentUser);
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    dispatch(logOut());
+    toast.success("User Log out successfully");
+    navigate("/");
+  };
   return (
     <Navbar isBordered onMenuOpenChange={() => setIsMenuOpen}>
       <NavbarMenuToggle
@@ -45,11 +56,19 @@ const MenuBar = () => {
           <Link href="/login">Login</Link>
         </NavbarItem> */}
         <NavbarItem>
-          <Button style={{ backgroundColor: "#DF453E", color: "#fff" }}>
-            <Link className="text-white" href="/login">
-              Sign In
-            </Link>
-          </Button>
+          {user ? (
+            <Button style={{ backgroundColor: "#DF453E", color: "#fff" }}>
+              <Link onClick={handleLogout} className="text-white" href="/login">
+                Log Out
+              </Link>
+            </Button>
+          ) : (
+            <Button style={{ backgroundColor: "#DF453E", color: "#fff" }}>
+              <Link className="text-white" href="/login">
+                Sign In
+              </Link>
+            </Button>
+          )}
         </NavbarItem>
       </NavbarContent>
       <NavbarMenu>
