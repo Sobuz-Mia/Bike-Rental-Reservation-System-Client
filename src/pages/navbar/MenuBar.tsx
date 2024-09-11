@@ -50,6 +50,16 @@ const MenuBar = () => {
             About Us
           </NavLink>
         </NavbarItem>
+        {user && (
+          <NavbarItem>
+            <NavLink
+              to={`/${user?.role}/dashboard`}
+              className={({ isActive }) => (isActive ? "text-[#DF453E]" : "")}
+            >
+              Dashboard
+            </NavLink>
+          </NavbarItem>
+        )}
       </NavbarContent>
       <NavbarContent justify="end">
         {/* <NavbarItem>

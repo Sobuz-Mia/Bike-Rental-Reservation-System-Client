@@ -5,6 +5,7 @@ import Login from "../pages/login/Login.js";
 import SignUp from "../pages/signUp/SignUp.js";
 import UserDashboardLayout from "../components/layout/UserDashboardLayout.js";
 import UserDashboard from "../pages/user/UserDashboard.js";
+import UserProfile from "../pages/user/UserProfile.js";
 
 export const route = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ export const route = createBrowserRouter([
       {
         path: "dashboard",
         element: <UserDashboard />,
+      },
+      {
+        path: "user-profile",
+        element: <UserProfile />,
       },
     ],
   },
