@@ -3,6 +3,8 @@ import App from "../App";
 import Home from "../pages/home/Home.js";
 import Login from "../pages/login/Login.js";
 import SignUp from "../pages/signUp/SignUp.js";
+import UserDashboardLayout from "../components/layout/UserDashboardLayout.js";
+import UserDashboard from "../pages/user/UserDashboard.js";
 
 export const route = createBrowserRouter([
   {
@@ -12,6 +14,16 @@ export const route = createBrowserRouter([
       {
         path: "/",
         element: <Home />,
+      },
+    ],
+  },
+  {
+    path: "/user",
+    element: <UserDashboardLayout />,
+    children: [
+      {
+        path: "dashboard",
+        element: <UserDashboard />,
       },
     ],
   },

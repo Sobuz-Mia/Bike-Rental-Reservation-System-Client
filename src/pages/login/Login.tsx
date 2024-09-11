@@ -31,7 +31,7 @@ const Login = () => {
       console.log(user);
       dispatch(setUser({ user: user, token: res?.data?.accessToken }));
       // Redirect to dashboard
-      navigate("/");
+      navigate(`/${user?.role}/dashboard`);
 
       // display toast
       toast.success(`${res?.message}`);
