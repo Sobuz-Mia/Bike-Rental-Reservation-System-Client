@@ -1,20 +1,23 @@
 import { Menu } from "antd";
 import Sider from "antd/es/layout/Sider";
-import { NavLink } from "react-router-dom";
-
+import { adminItems, userItems } from "./sidebar.items";
+const userRole = {
+  ADMIN: "admin",
+  USER: "user",
+};
 const Sidebar = () => {
-  const items = [
-    {
-      key: "User-profile-management",
-      label: "User Profile Management",
-      children: [
-        {
-          key: "User-profile",
-          label: <NavLink to={"/user/user-profile"}>Profile</NavLink>,
-        },
-      ],
-    },
-  ];
+  const role = "admin";
+  let sidebarItems;
+  switch (role) {
+    case userRole.ADMIN:
+      sidebarItems = adminItems;
+      break;
+    case userRole.USER:
+      sidebarItems = userItems;
+      break;
+    default:
+      break;
+  }
   return (
     <Sider
       breakpoint="lg"
@@ -37,7 +40,7 @@ const Sidebar = () => {
         theme="dark"
         mode="inline"
         defaultSelectedKeys={["4"]}
-        items={items}
+        items={sidebarItems}
       />
     </Sider>
   );
