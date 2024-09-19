@@ -9,6 +9,17 @@ const bikeManagementApi = baseApi.injectEndpoints({
         url: "/bikes",
         method: "GET",
       }),
+      providesTags: ["bikes"],
+      transformResponse: (response: TResponseRedux<TBike[]>) => {
+        return { data: response?.data };
+      },
+    }),
+    deleteBike: builder.mutation({
+      query: (id) => ({
+        url: `/bikes/${id}`,
+        method: "DELETE",
+      }),
+      invalidatesTags: ["bikes"],
       transformResponse: (response: TResponseRedux<TBike[]>) => {
         return { data: response?.data };
       },
@@ -16,4 +27,4 @@ const bikeManagementApi = baseApi.injectEndpoints({
   }),
 });
 
-export const { useGetAllBikesQuery } = bikeManagementApi;
+export const { useGetAllBikesQuery, useDeleteBikeMutation } = bikeManagementApi;

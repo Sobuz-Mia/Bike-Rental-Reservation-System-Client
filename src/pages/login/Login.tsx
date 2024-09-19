@@ -27,8 +27,8 @@ const Login = () => {
         password: data?.password,
       };
       const res = await login(userInfo).unwrap();
+      console.log(res);
       const user = verifyAccessToken(res?.data?.accessToken) as TUser;
-      console.log(user);
       dispatch(setUser({ user: user, token: res?.data?.accessToken }));
       // Redirect to dashboard
       navigate(`/${user?.role}/dashboard`);
