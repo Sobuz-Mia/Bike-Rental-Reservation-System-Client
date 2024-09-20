@@ -15,6 +15,7 @@ export type TResponse<T> = {
   statusCode: number;
   errorMessage?: string;
   message: string;
+  error?: TError;
 };
 
 export type TResponseRedux<T> = TResponse<T> & BaseQueryApi;

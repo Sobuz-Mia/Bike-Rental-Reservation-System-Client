@@ -29,9 +29,6 @@ const bikeManagementApi = baseApi.injectEndpoints({
         method: "DELETE",
       }),
       invalidatesTags: ["bikes"],
-      transformResponse: (response: TResponseRedux<TBike[]>) => {
-        return { data: response?.data };
-      },
     }),
     updateBike: builder.mutation({
       query: (args) => {
@@ -42,9 +39,16 @@ const bikeManagementApi = baseApi.injectEndpoints({
         };
       },
       invalidatesTags: ["bikes"],
-      transformResponse: (response: TResponseRedux<TBike[]>) => {
-        return { data: response?.data };
+    }),
+    createBike: builder.mutation({
+      query: (data) => {
+        return {
+          url: `/bikes`,
+          method: "POST",
+          body: data,
+        };
       },
+      invalidatesTags: ["bikes"],
     }),
   }),
 });
@@ -54,4 +58,5 @@ export const {
   useDeleteBikeMutation,
   useGetSingleBikeQuery,
   useUpdateBikeMutation,
+  useCreateBikeMutation,
 } = bikeManagementApi;
