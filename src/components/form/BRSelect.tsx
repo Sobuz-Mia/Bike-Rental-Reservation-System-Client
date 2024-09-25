@@ -3,7 +3,9 @@ import { Controller } from "react-hook-form";
 type TBRSelectProps = {
   label: string;
   name: string;
-  options: { value: number; label: number; disabled?: boolean }[] | undefined;
+  options:
+    | { value: number | string; label: number; disabled?: boolean }[]
+    | undefined;
   disabled?: boolean;
   mode?: "multiple" | undefined;
 };

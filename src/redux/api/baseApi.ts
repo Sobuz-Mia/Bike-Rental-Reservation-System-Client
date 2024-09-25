@@ -30,6 +30,7 @@ const baseQueryWithRefreshToken: BaseQueryFn<
   DefinitionType
 > = async (args, api, extraOptions): Promise<any> => {
   let result = await baseQuery(args, api, extraOptions);
+
   const error = result?.error as TError;
   if (error?.status === 404) {
     toast.error(error?.data?.message);
@@ -62,5 +63,5 @@ export const baseApi = createApi({
   reducerPath: "baseApi",
   baseQuery: baseQueryWithRefreshToken,
   endpoints: () => ({}),
-  tagTypes: ["bikes"],
+  tagTypes: ["bikes", "users"],
 });

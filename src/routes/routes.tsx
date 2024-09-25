@@ -6,6 +6,7 @@ import SignUp from "../pages/signUp/SignUp.js";
 import UserDashboardLayout from "../components/layout/UserDashboardLayout.js";
 import { UserRoutes } from "./userRoutes.js";
 import { AdminRoutes } from "./adminRoutes.js";
+import ProtectedRoute from "./ProtectedRoute.js";
 
 export const route = createBrowserRouter([
   {
@@ -25,7 +26,11 @@ export const route = createBrowserRouter([
   },
   {
     path: "/admin",
-    element: <UserDashboardLayout />,
+    element: (
+      <ProtectedRoute>
+        <UserDashboardLayout />
+      </ProtectedRoute>
+    ),
     children: AdminRoutes,
   },
   {

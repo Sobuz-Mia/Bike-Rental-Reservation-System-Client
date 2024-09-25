@@ -1,6 +1,7 @@
 import { Menu } from "antd";
 import Sider from "antd/es/layout/Sider";
 import { adminItems, userItems } from "./sidebar.items";
+import { Link } from "react-router-dom";
 const userRole = {
   ADMIN: "admin",
   USER: "user",
@@ -34,7 +35,9 @@ const Sidebar = () => {
           padding: "20px",
         }}
       >
-        <h1>Bike Rentals</h1>
+        <Link to={"/"}>
+          <h1>Bike Rentals</h1>
+        </Link>
       </div>
       <Menu
         theme="dark"
